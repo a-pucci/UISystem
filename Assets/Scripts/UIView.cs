@@ -1,6 +1,7 @@
 using System;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Utilities.Extensions;
 
 namespace UI.Component {
@@ -90,9 +91,20 @@ namespace UI.Component {
 		private void OnShowEnd() {
 			state = State.Visible;
 			canvasGroup.Show(true);
-			if (selectedObject)
-				UINavigation.UpdateSelectedObject(selectedObject);
+
+			UpdateSelectedObject();
+			
 			ShowEnd?.Invoke();
+		}
+
+		private void UpdateSelectedObject() {
+			if (!selectedObject)
+				return;
+
+			if (EventSystem.current.currentSelectedGameObject == selectedObject)
+				return;
+			
+			EventSystem.current.SetSelectedGameObject(selectedObject);
 		}
 
 		#endregion

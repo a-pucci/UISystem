@@ -36,7 +36,7 @@ namespace UI.Component {
 		}
 
 		public virtual void OnPointerEnter(PointerEventData eventData) {
-			UINavigation.UpdateSelectedObject(gameObject);
+			UpdateSelectedObject();
 			StartCoroutine(ExecuteAnimation(settings.Animations.selectAnimation));
 			SetSelected();
 		}
@@ -110,5 +110,11 @@ namespace UI.Component {
 				yield return new WaitForSecondsRealtime(uiAnimation.TotalDuration);
 		}
 
+		private void UpdateSelectedObject() {
+			if (EventSystem.current.currentSelectedGameObject == gameObject)
+				return;
+			
+			EventSystem.current.SetSelectedGameObject(gameObject);
+		}
 	}
 }

@@ -1,4 +1,3 @@
-using NaughtyAttributes;
 using UnityEngine;
 
 namespace UI.Component {
@@ -6,19 +5,19 @@ namespace UI.Component {
 
 	public partial class UIAnimation : ScriptableObject {
 
-		[SerializeField, HorizontalLine(color: EColor.Green)] 
+		[SerializeField] 
 		private MoveAnimation move;
 		public MoveAnimation Move => move;
 		
-		[SerializeField, HorizontalLine(color: EColor.Violet)] 
+		[SerializeField] 
 		private RotateAnimation rotate;
 		public RotateAnimation Rotate => rotate;
 		
-		[SerializeField, HorizontalLine(color: EColor.Orange)] 
+		[SerializeField] 
 		private ScaleAnimation scale;
 		public ScaleAnimation Scale => scale;
 		
-		[SerializeField, HorizontalLine(color: EColor.Yellow)] 
+		[SerializeField] 
 		private FadeAnimation fade;
 		public FadeAnimation Fade => fade;
 		

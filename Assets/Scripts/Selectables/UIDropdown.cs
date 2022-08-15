@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 namespace UI.Component {
 	public class UIDropdown : UISelectable {
-		[SerializeField] private TextMeshProUGUI dropdownLabel = default;
-		[SerializeField] private Image arrow = default;
-		[SerializeField] private TMP_Dropdown dropdown = default;
+		[SerializeField] private TextMeshProUGUI dropdownLabel;
+		[SerializeField] private Image arrow;
+		[SerializeField] private TMP_Dropdown dropdown;
 
 		public List<TMP_Dropdown.OptionData> Options {
 			get => dropdown.options;
@@ -27,7 +27,7 @@ namespace UI.Component {
 			dropdownLabel.color = settings.Unpressed.label;
 		}
 
-		protected override void SetPressed() {
+		public override void SetPressed() {
 			base.SetPressed();
 			arrow.color = settings.Pressed.label;
 			dropdownLabel.color = settings.Pressed.label;
@@ -39,7 +39,7 @@ namespace UI.Component {
 			dropdownLabel.color = settings.Selected.label;
 		}
 
-		protected override void SetError() {
+		public override void SetError() {
 			base.SetError();
 			arrow.color = settings.Error.label;
 			dropdownLabel.color = settings.Error.label;

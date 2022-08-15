@@ -10,10 +10,10 @@ namespace UI.Component {
 		public event Action<int> ChangedSelection;
 		private int index;
 
-		[SerializeField] private Button leftArrow = default;
-		[SerializeField] private Button rightArrow = default;
-		[SerializeField] private float scaleDuration = default;
-		[SerializeField] private float scaleAmount = default;
+		[SerializeField] private Button leftArrow;
+		[SerializeField] private Button rightArrow;
+		[SerializeField] private float scaleDuration;
+		[SerializeField] private float scaleAmount;
 
 		private RectTransform leftRect;
 		private RectTransform rightRect;

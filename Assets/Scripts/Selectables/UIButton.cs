@@ -1,13 +1,10 @@
-using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Component {
 	[RequireComponent(typeof(Button))]
 	public class UIButton : UISelectable {
-		[SerializeField] protected bool blinkOnClick = true;
-
-		[SerializeField, OnValueChanged("ChangeVisibility")]
+		[SerializeField]
 		protected bool notAvailable = default;
 		public bool NotAvailable {
 			get => notAvailable;
@@ -18,9 +15,9 @@ namespace UI.Component {
 		}
 		[Space(20)]
 		[SerializeField] protected bool changeViewOnClick;
-		[ShowIf(nameof(changeViewOnClick)), SerializeField, Label("Show")] 
+		[SerializeField] 
 		protected UIView viewToShow = default;
-		[ShowIf(nameof(changeViewOnClick)), SerializeField, Label("Hide")] 
+		[SerializeField] 
 		protected UIView viewToHide = default;
 		private Button button;
 		
@@ -36,7 +33,7 @@ namespace UI.Component {
 
 		protected virtual void Start() => SetUnpressed();
 		
-		protected virtual void ChangeVisibility() {}
+		public virtual void ChangeVisibility() {}
 
 		public virtual void OnClick() {
 			if (gameObject.activeInHierarchy) {
@@ -44,12 +41,9 @@ namespace UI.Component {
 					StartCoroutine(ErrorFlash());
 					return;
 				}
-				if (blinkOnClick) 
-					StartCoroutine(MakeDoubleFlash(ChangeView));
-				else {
-					SetPressed();
-					ChangeView();
-				}
+				
+				SetPressed();
+				ChangeView();
 			}
 		}
 

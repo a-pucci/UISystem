@@ -1,11 +1,10 @@
 ﻿using System;
-using NaughtyAttributes;
 
 using UnityEngine;
 
 public class UIBackButton : MonoBehaviour {
 	private static UIBackButton instance;
-	[ShowNonSerializedField] private bool canGoBack = true;
+	private bool canGoBack = true;
 	public static bool CanGoBack {
 		get => instance.canGoBack;
 		set => instance.canGoBack = value;
